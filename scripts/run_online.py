@@ -29,6 +29,10 @@ def arg_parser():
                         help='remove keypoints below this confidence')
     parser.add_argument('--gba_step', type=int, default=8, help='run a global BA every `step` frames')
     parser.add_argument('--max_iters_local', type=int, default=10, help='BA iterations between frames')
+    parser.add_argument('--pin_memory', action='store_true',
+                        help='keep the per-frame matcher tokens in pinned host RAM instead of the '
+                             'GPU, so GPU memory stops growing with the sequence '
+                             '(about 4MB per frame at size 512, for a ~170MB copy per frame)')
     return parser
 
 
